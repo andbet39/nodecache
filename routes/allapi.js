@@ -18,16 +18,16 @@ router.get('/*', function(req, res, next) {
 
     client.get(url,function(err, reply){
 
-        console.log(reply);
-        console.log(err);
+        //console.log(reply);
+        console.log('CACHE ERROR: '+ err);
 
         if(reply){
-            console.log('found in cache');
+            console.log('Found in cache');
             res.setHeader('Content-Type', 'application/json');
             res.send(reply);
 
         }else{
-            console.log('not found in cache');
+            console.log('NOT found in cache');
 
             var options = {
                 host: 'www.codetutorial.io',
