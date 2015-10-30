@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 
 
-var users = require('./routes/users');
-var posts = require('./routes/posts');
 var allapi = require('./routes/allapi');
 
 var redis_client = require('./redismodule');
@@ -18,9 +16,7 @@ var app = express();
 app.use(cors());
 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,8 +27,6 @@ app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', users);
-app.use('/posts', posts);
 app.use('/api', allapi);
 
 
@@ -66,8 +60,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 
 module.exports = app;
