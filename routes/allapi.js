@@ -14,8 +14,10 @@ router.get('/*', function(req, res, next) {
     console.log('call URL: '+url);
 
     var client = redis_client.client();
+    console.log("redis client available");
 
     client.get(url,function(err, reply){
+
         console.log(reply);
         console.log(err);
 
@@ -46,7 +48,6 @@ router.get('/*', function(req, res, next) {
 
                     client.set(url,body, function(err, reply) {
                         console.log("Cache saved");
-                        console.log(reply);
                     });
 
                     res.setHeader('Content-Type', 'application/json');

@@ -9,8 +9,6 @@ var cors=require('cors');
 
 var allapi = require('./routes/allapi');
 
-var redis_client = require('./redismodule');
-
 
 var app = express();
 app.use(cors());
